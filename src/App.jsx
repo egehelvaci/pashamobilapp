@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Capacitor } from '@capacitor/core';
 import { PushNotifications } from '@capacitor/push-notifications';
 import { BarcodeScanner } from '@capacitor-mlkit/barcode-scanning';
+import { Browser } from '@capacitor/browser';
 import { APP_CONFIG } from './config';
 import './App.css';
 
@@ -78,6 +79,28 @@ function App() {
     }
   };
 
+  // Ödeme için yeni sekme aç
+  const openPaymentInNewTab = async (paymentUrl) => {
+    try {
+      if (Capacitor.isNativePlatform()) {
+        // Mobil platformlarda browser açılır
+        await Browser.open({
+          url: paymentUrl,
+          windowName: '_blank',
+          toolbarColor: '#000000',
+          presentationStyle: 'fullscreen'
+        });
+      } else {
+        // Web platformunda normal window.open
+        window.open(paymentUrl, '_blank', 'noopener,noreferrer');
+      }
+      console.log('Ödeme sayfası açıldı:', paymentUrl);
+    } catch (error) {
+      console.error('Ödeme sayfası açma hatası:', error);
+      alert('Ödeme sayfası açılamadı!');
+    }
+  };
+
   // QR kod tarama
   const scanQRCode = async () => {
     try {
@@ -132,6 +155,12 @@ function App() {
           type: 'pushToken',
           token: pushToken
         }, '*');
+      } else if (event.data.type === 'openPayment') {
+        // Ödeme sayfasını yeni sekmede aç
+        const paymentUrl = event.data.url;
+        if (paymentUrl) {
+          openPaymentInNewTab(paymentUrl);
+        }
       }
     };
 
