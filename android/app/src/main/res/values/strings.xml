@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Pasha MobilWebView</string>
+    <string name="title_activity_main">Pasha MobilWebView</string>
+    <string name="package_name">com.pasha.mobilwebview</string>
+    <string name="custom_url_scheme">com.pasha.mobilwebview</string>
+</resources>

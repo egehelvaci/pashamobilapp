@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "153335450192",
+    "project_id": "pashamobilapp",
+    "storage_bucket": "pashamobilapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153335450192:android:6b9ffc3838e192c4005f55",
+        "android_client_info": {
+          "package_name": "com.pasha.mobilwebview"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy6R8gaBwZHqcckD-gxm0cy4OO1dDQpv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
